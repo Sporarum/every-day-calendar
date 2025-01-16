@@ -16,55 +16,6 @@ export default class EveryDayCalendar extends Plugin {
 	async onload() {
 		await this.loadSettings();
 
-		// This creates an icon in the left ribbon.
-		const ribbonIconEl = this.addRibbonIcon('dice', 'Sample Plugin', (evt: MouseEvent) => {
-			// Called when the user clicks the icon.
-			new Notice('This is a notice!');
-		});
-		// Perform additional things with the ribbon
-		ribbonIconEl.addClass('my-plugin-ribbon-class');
-
-		// This adds a status bar item to the bottom of the app. Does not work on mobile apps.
-		const statusBarItemEl = this.addStatusBarItem();
-		statusBarItemEl.setText('Status Bar Text');
-
-		// This adds a simple command that can be triggered anywhere
-		this.addCommand({
-			id: 'open-sample-modal-simple',
-			name: 'Open sample modal (simple)',
-			callback: () => {
-				new SampleModal(this.app).open();
-			}
-		});
-		// This adds an editor command that can perform some operation on the current editor instance
-		this.addCommand({
-			id: 'sample-editor-command',
-			name: 'Sample editor command',
-			editorCallback: (editor: Editor, view: MarkdownView) => {
-				console.log(editor.getSelection());
-				editor.replaceSelection('Sample Editor Command');
-			}
-		});
-		// This adds a complex command that can check whether the current state of the app allows execution of the command
-		this.addCommand({
-			id: 'open-sample-modal-complex',
-			name: 'Open sample modal (complex)',
-			checkCallback: (checking: boolean) => {
-				// Conditions to check
-				const markdownView = this.app.workspace.getActiveViewOfType(MarkdownView);
-				if (markdownView) {
-					// If checking is true, we're simply "checking" if the command can be run.
-					// If checking is false, then we want to actually perform the operation.
-					if (!checking) {
-						new SampleModal(this.app).open();
-					}
-
-					// This command will only show up in Command Palette when the check function returns true
-					return true;
-				}
-			}
-		});
-
 		// This adds a settings tab so the user can configure various aspects of the plugin
 		this.addSettingTab(new SampleSettingTab(this.app, this));
 
@@ -76,6 +27,44 @@ export default class EveryDayCalendar extends Plugin {
 
 		// When registering intervals, this function will automatically clear the interval when the plugin is disabled.
 		this.registerInterval(window.setInterval(() => console.log('setInterval'), 5 * 60 * 1000));
+
+		type ResultType = number | boolean
+
+		//@ts-ignore
+		window.everyDayCalendar = (el: HTMLElement, year: number, fromDays: (d: Date) => ResultType): void => {
+			
+			const monthsInYear = 12
+
+			// from https://stackoverflow.com/questions/11322281/javascript-get-array-of-day-names-of-given-date-month-year
+			function daysInMonth(month: number): number {
+				// returns the day-number of the day before the first day of the following month, i.e. the number of days in that month
+				return new Date(year, month, 0).getDate()
+			}
+
+			const results: ResultType[][] = Array(monthsInYear).fill([])
+
+			for (var protoMonth = 0; protoMonth < monthsInYear; protoMonth++) {
+
+				const month: number = protoMonth + 1 // from 0 indexed to 1 indexed
+				const daysInThisMonth = daysInMonth(month)
+
+				for (var protoDay = 0; protoDay < daysInThisMonth; protoDay++) {
+					const day = protoDay + 1
+					results[protoMonth].push(fromDays(new Date(year, protoMonth, day)))
+				}
+
+			}
+
+			//const debugString: string = results.map(month => month.map(day => day.toString() + "\n").toString() + "\n").toString()
+			const debugString: string = results[0].map(day => day.toString() + "\n").toString()
+
+
+			createSpan({
+				cls: "test",
+				parent: el,
+				text: debugString,
+			})
+		}
 	}
 
 	onunload() {
