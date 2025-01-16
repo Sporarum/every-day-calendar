@@ -3,7 +3,7 @@
 	"name": "Every Day Calendar",
 	"version": "1.0.0",
 	"minAppVersion": "0.15.0",
-	"description": "Create calendars inspired by Simone Giertz's Every Day Calendar ",
+	"description": "Create calendars inspired by Simone Giertz's Every Day Calendar",
 	"author": "QuBe",
 	"authorUrl": "https://github.com/Sporarum",
 	"isDesktopOnly": false
