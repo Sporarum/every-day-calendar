@@ -41,7 +41,7 @@ export default class EveryDayCalendar extends Plugin {
 				return new Date(year, month, 0).getDate()
 			}
 
-			const results: ResultType[][] = Array(monthsInYear).fill([])
+			const results: ResultType[][] = Array(monthsInYear).fill([]).map(_ => [])
 
 			for (var protoMonth = 0; protoMonth < monthsInYear; protoMonth++) {
 
