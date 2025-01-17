@@ -1,10 +1,6 @@
 /*
-
-This CSS file will be included with your plugin, and
-available in the app when your plugin is enabled.
-
-If your plugin does not need CSS, delete this file.
-
+ Color reference:
+ https://docs.obsidian.md/Reference/CSS+variables/Foundations/Colors
 */
 
 .every-day-calendar.boxes {
