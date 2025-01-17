@@ -38,7 +38,7 @@ export default class EveryDayCalendar extends Plugin {
 			// from https://stackoverflow.com/questions/11322281/javascript-get-array-of-day-names-of-given-date-month-year
 			function daysInMonth(month: number): number {
 				// returns the day-number of the day before the first day of the following month, i.e. the number of days in that month
-				return new Date(year, month, 0).getDate()
+				return new Date(Date.UTC(year, month, 0)).getUTCDate()
 			}
 
 			const results: ResultType[][] = Array(monthsInYear).fill([]).map(_ => [])
@@ -50,7 +50,7 @@ export default class EveryDayCalendar extends Plugin {
 
 				for (var protoDay = 0; protoDay < daysInThisMonth; protoDay++) {
 					const day = protoDay + 1
-					results[protoMonth].push(fromDays(new Date(year, protoMonth, day)))
+					results[protoMonth].push(fromDays(new Date(Date.UTC(year, protoMonth, day))))
 				}
 			}
 
