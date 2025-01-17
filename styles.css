@@ -6,3 +6,36 @@ available in the app when your plugin is enabled.
 If your plugin does not need CSS, delete this file.
 
 */
+
+.every-day-calendar-boxes {
+    display: flex;
+    flex-direction: row;
+}
+
+.every-day-calendar-column {
+    display: flex;
+    flex-direction: column;
+}
+
+.every-day-calendar-box {
+    display: flex;
+    flex-direction: row;
+    font-size: 10px;
+    color: black;
+    background-color: #FF00FF;
+    border-radius: 25%;
+    width: 10px;
+    height: 10px;
+    margin: 5px;
+}
+
+.every-day-calendar-box[value=false] {
+    color: #333333;
+    background-color: #333333;
+}
+
+.every-day-calendar-box[value=true] {
+    color: #8A5BF5;
+    background-color: #8A5BF5;
+}
+

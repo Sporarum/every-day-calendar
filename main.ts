@@ -28,7 +28,7 @@ export default class EveryDayCalendar extends Plugin {
 		// When registering intervals, this function will automatically clear the interval when the plugin is disabled.
 		this.registerInterval(window.setInterval(() => console.log('setInterval'), 5 * 60 * 1000));
 
-		type ResultType = number | boolean
+		type ResultType = boolean
 
 		//@ts-ignore
 		window.everyDayCalendar = (el: HTMLElement, year: number, fromDays: (d: Date) => ResultType): void => {
@@ -52,18 +52,63 @@ export default class EveryDayCalendar extends Plugin {
 					const day = protoDay + 1
 					results[protoMonth].push(fromDays(new Date(year, protoMonth, day)))
 				}
-
 			}
 
 			//const debugString: string = results.map(month => month.map(day => day.toString() + "\n").toString() + "\n").toString()
-			const debugString: string = results[0].map(day => day.toString() + "\n").toString()
-
+			//const debugString: string = results[0].map(day => day.toString() + "\n").toString()
+			/* const debugString: string = results.map(month => month.length.toString() + "\n").toString()
 
 			createSpan({
 				cls: "test",
 				parent: el,
 				text: debugString,
+			}) */
+
+			interface Box {
+				enabled: boolean;
+			}
+
+			const boxes: Box[][] = results.map(month => month.map( (day: ResultType) => {
+				return {enabled: day, }
+			}))
+
+			const outerDiv = createDiv({
+				cls: "every-day-calendar",
+				parent: el,
 			})
+
+			const boxesDiv = createDiv({
+				cls: "every-day-calendar-boxes",
+				parent: outerDiv,
+			})
+
+			// TODO: try https://developer.mozilla.org/en-US/docs/Web/HTML/Element/col
+
+			const creations = boxes.map(month => {
+				const column = createDiv({
+					cls: "every-day-calendar-column",
+					parent: boxesDiv,
+				})
+
+				month.map(box => {
+
+					/*createDiv({
+						cls: "every-day-calendar-box",
+						parent: column,
+					})*/
+
+					createSpan({
+						cls: "every-day-calendar-box",
+						parent: column,
+						text: "",//"🙾",
+						attr: {value: box.enabled,},
+					})
+				})
+			})
+
+			creations.forEach(x => {return})
+
+
 		}
 	}
 
