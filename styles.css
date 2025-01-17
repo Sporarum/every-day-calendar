@@ -30,12 +30,12 @@ If your plugin does not need CSS, delete this file.
 }
 
 .every-day-calendar-box[value=false] {
-    color: #333333;
-    background-color: #333333;
+    color: var(--background-secondary);/* var(--background-modifier-border); */
+    background-color: var(--background-secondary);/* var(--background-modifier-border); */
 }
 
 .every-day-calendar-box[value=true] {
-    color: #8A5BF5;
-    background-color: #8A5BF5;
+    color: var(--text-accent);
+    background-color: var(--text-accent);
 }
 
