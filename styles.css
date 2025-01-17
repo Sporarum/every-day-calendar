@@ -13,7 +13,8 @@
     grid-template-columns: repeat(12, 1fr);
     grid-gap: 5px;
     grid-auto-flow: dense;
-    width: 30%;
+    aspect-ratio: 12 / 32; /* / 31 does not work for some reason */
+    height: 60vh;
 }
 
 .every-day-calendar.box {
