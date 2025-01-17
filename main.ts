@@ -99,10 +99,6 @@ export default class EveryDayCalendar extends Plugin {
 					})
 				})
 			})
-
-			creations.forEach(x => {return})
-
-
 		}
 	}
 
