@@ -7,17 +7,17 @@ If your plugin does not need CSS, delete this file.
 
 */
 
-.every-day-calendar-boxes {
+.every-day-calendar.boxes {
     display: flex;
     flex-direction: row;
 }
 
-.every-day-calendar-column {
+.every-day-calendar.column {
     display: flex;
     flex-direction: column;
 }
 
-.every-day-calendar-box {
+.every-day-calendar.box {
     display: flex;
     flex-direction: row;
     font-size: 10px;
@@ -29,15 +29,15 @@ If your plugin does not need CSS, delete this file.
     margin: 5px;
 }
 
-.every-day-calendar-box[value="0"] {
+.every-day-calendar.box[value="0"] {
     background-color: var(--background-secondary);
 }
 
-.every-day-calendar-box[value="1"] {
+.every-day-calendar.box[value="1"] {
     background-color: var(--background-modifier-border);
 }
 
-.every-day-calendar-box[value="2"] {
+.every-day-calendar.box[value="2"] {
     background-color: var(--text-accent);
 }
 

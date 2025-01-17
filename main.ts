@@ -78,7 +78,7 @@ export default class EveryDayCalendar extends Plugin {
 			})
 
 			const boxesDiv = createDiv({
-				cls: "every-day-calendar-boxes",
+				cls: ["every-day-calendar", "boxes"],
 				parent: outerDiv,
 			})
 
@@ -86,21 +86,15 @@ export default class EveryDayCalendar extends Plugin {
 
 			const creations = boxes.map(month => {
 				const column = createDiv({
-					cls: "every-day-calendar-column",
+					cls: ["every-day-calendar", "column"],
 					parent: boxesDiv,
 				})
 
 				month.map(box => {
-
-					/*createDiv({
-						cls: "every-day-calendar-box",
-						parent: column,
-					})*/
-
 					createSpan({
-						cls: "every-day-calendar-box",
+						cls: ["every-day-calendar", "box"],
 						parent: column,
-						text: "",//"🙾",
+						text: "",
 						attr: {value: box.value,},
 					})
 				})
