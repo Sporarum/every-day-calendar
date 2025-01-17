@@ -56,22 +56,15 @@ export default class EveryDayCalendar extends Plugin {
 				const month: number = protoMonth + 1 // from 0 indexed to 1 indexed
 				const daysInThisMonth = daysInMonth(month)
 				
-				// TODO: try https://developer.mozilla.org/en-US/docs/Web/HTML/Element/col
-				
-				const column = createDiv({
-					cls: ["every-day-calendar", "column"],
-					parent: boxesDiv,
-				})
-
 				for (var protoDay = 0; protoDay < daysInThisMonth; protoDay++) {
 					const day = protoDay + 1
 					const value = fromDays(new Date(Date.UTC(year, protoMonth, day)))
 
 					createSpan({
 						cls: ["every-day-calendar", "box"],
-						parent: column,
-						text: "",
-						attr: {value: value,},
+						parent: boxesDiv,
+						text: "",//`${month}-${day}`,
+						attr: {value: value, month: month},
 					})
 				}
 			}
