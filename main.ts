@@ -41,37 +41,6 @@ export default class EveryDayCalendar extends Plugin {
 				return new Date(Date.UTC(year, month, 0)).getUTCDate()
 			}
 
-			const results: ResultType[][] = Array(monthsInYear).fill([]).map(_ => [])
-
-			for (var protoMonth = 0; protoMonth < monthsInYear; protoMonth++) {
-
-				const month: number = protoMonth + 1 // from 0 indexed to 1 indexed
-				const daysInThisMonth = daysInMonth(month)
-
-				for (var protoDay = 0; protoDay < daysInThisMonth; protoDay++) {
-					const day = protoDay + 1
-					results[protoMonth].push(fromDays(new Date(Date.UTC(year, protoMonth, day))))
-				}
-			}
-
-			//const debugString: string = results.map(month => month.map(day => day.toString() + "\n").toString() + "\n").toString()
-			//const debugString: string = results[0].map(day => day.toString() + "\n").toString()
-			/* const debugString: string = results.map(month => month.length.toString() + "\n").toString()
-
-			createSpan({
-				cls: "test",
-				parent: el,
-				text: debugString,
-			}) */
-
-			interface Box {
-				value: ResultType;
-			}
-
-			const boxes: Box[][] = results.map(month => month.map( (day: ResultType) => {
-				return {value: day, }
-			}))
-
 			const outerDiv = createDiv({
 				cls: "every-day-calendar",
 				parent: el,
@@ -82,23 +51,31 @@ export default class EveryDayCalendar extends Plugin {
 				parent: outerDiv,
 			})
 
-			// TODO: try https://developer.mozilla.org/en-US/docs/Web/HTML/Element/col
+			for (var protoMonth = 0; protoMonth < monthsInYear; protoMonth++) {
 
-			const creations = boxes.map(month => {
+				const month: number = protoMonth + 1 // from 0 indexed to 1 indexed
+				const daysInThisMonth = daysInMonth(month)
+				
+				// TODO: try https://developer.mozilla.org/en-US/docs/Web/HTML/Element/col
+				
 				const column = createDiv({
 					cls: ["every-day-calendar", "column"],
 					parent: boxesDiv,
 				})
 
-				month.map(box => {
+				for (var protoDay = 0; protoDay < daysInThisMonth; protoDay++) {
+					const day = protoDay + 1
+					const value = fromDays(new Date(Date.UTC(year, protoMonth, day)))
+
 					createSpan({
 						cls: ["every-day-calendar", "box"],
 						parent: column,
 						text: "",
-						attr: {value: box.value,},
+						attr: {value: value,},
 					})
-				})
-			})
+				}
+			}
+
 		}
 	}
 
