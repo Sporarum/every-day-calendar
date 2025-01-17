@@ -28,7 +28,7 @@ export default class EveryDayCalendar extends Plugin {
 		// When registering intervals, this function will automatically clear the interval when the plugin is disabled.
 		this.registerInterval(window.setInterval(() => console.log('setInterval'), 5 * 60 * 1000));
 
-		type ResultType = boolean
+		type ResultType = number
 
 		//@ts-ignore
 		window.everyDayCalendar = (el: HTMLElement, year: number, fromDays: (d: Date) => ResultType): void => {
@@ -65,11 +65,11 @@ export default class EveryDayCalendar extends Plugin {
 			}) */
 
 			interface Box {
-				enabled: boolean;
+				value: ResultType;
 			}
 
 			const boxes: Box[][] = results.map(month => month.map( (day: ResultType) => {
-				return {enabled: day, }
+				return {value: day, }
 			}))
 
 			const outerDiv = createDiv({
@@ -101,7 +101,7 @@ export default class EveryDayCalendar extends Plugin {
 						cls: "every-day-calendar-box",
 						parent: column,
 						text: "",//"🙾",
-						attr: {value: box.enabled,},
+						attr: {value: box.value,},
 					})
 				})
 			})

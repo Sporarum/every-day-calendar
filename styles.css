@@ -29,13 +29,15 @@ If your plugin does not need CSS, delete this file.
     margin: 5px;
 }
 
-.every-day-calendar-box[value=false] {
-    color: var(--background-secondary);/* var(--background-modifier-border); */
-    background-color: var(--background-secondary);/* var(--background-modifier-border); */
+.every-day-calendar-box[value="0"] {
+    background-color: var(--background-secondary);
 }
 
-.every-day-calendar-box[value=true] {
-    color: var(--text-accent);
+.every-day-calendar-box[value="1"] {
+    background-color: var(--background-modifier-border);
+}
+
+.every-day-calendar-box[value="2"] {
     background-color: var(--text-accent);
 }
 
