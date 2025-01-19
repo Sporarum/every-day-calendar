@@ -5,8 +5,8 @@
 
 /* to debug
 .every-day-calendar {
-    border: 1px solid var(--text-muted);
-}*/
+    outline: 1px solid var(--text-muted);
+} */
 
 .every-day-calendar.boxes {
     
@@ -16,7 +16,7 @@
 
     /* internals, do not override */
     --num-months: 12 !important;
-    --num-rows: 31 !important;
+    --num-rows: 33 !important; /* year + months + 31 days */
     --box-aspect-ratio: calc( var(--num-months) / var(--num-rows) )  !important;
     --sum-box-heights:  calc( var(--height) - (var(--num-rows) - 1) * var(--grid-gap) ) !important;
     --sum-box-widths:   calc( var(--sum-box-heights) * var(--box-aspect-ratio) ) !important;
@@ -27,6 +27,24 @@
     grid-auto-flow: dense;
     height: var(--height);
     width: var(--width);
+}
+
+.every-day-calendar.year {
+    text-align: center;
+    grid-column: 1 / 13;
+}
+
+.every-day-calendar.month.outer {
+    container-type: size;
+    aspect-ratio: 1;
+} 
+
+@container (min-width: 0px){
+    .every-day-calendar.month.inner {
+        font-size: 70cqh;
+        text-align: center;
+        margin: 0;
+    }
 }
 
 .every-day-calendar.box {

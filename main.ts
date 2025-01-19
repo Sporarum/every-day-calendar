@@ -51,15 +51,32 @@ export default class EveryDayCalendar extends Plugin {
 				parent: outerDiv,
 			})
 
+			createDiv({
+				cls: ["every-day-calendar", "year"],
+				parent: boxesDiv,
+				text: `${year}`
+			})
+
 			for (var protoMonth = 0; protoMonth < monthsInYear; protoMonth++) {
 
 				const month: number = protoMonth + 1 // from 0 indexed to 1 indexed
 				const daysInThisMonth = daysInMonth(month)
+
+				const monthDiv = createDiv({
+					cls: ["every-day-calendar", "month", "outer"],
+					parent: boxesDiv,
+				})
+
+				createDiv({
+					cls: ["every-day-calendar", "month", "inner"],
+					parent: monthDiv,
+					text: "" + new Date(Date.UTC(year, protoMonth)).toLocaleString("default", { month: "narrow"})
+				})
 				
 				for (var protoDay = 0; protoDay < daysInThisMonth; protoDay++) {
 					const day = protoDay + 1
 					const value = fromDays(new Date(Date.UTC(year, protoMonth, day)))
-
+					
 					createSpan({
 						cls: ["every-day-calendar", "box"],
 						parent: boxesDiv,
