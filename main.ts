@@ -42,19 +42,19 @@ export default class EveryDayCalendar extends Plugin {
 			}
 
 			const outerDiv = createDiv({
-				cls: "every-day-calendar",
+				cls: ["every-day-calendar", "outermost"],
 				parent: el,
+			})
+
+			createDiv({
+				cls: ["every-day-calendar", "year"],
+				parent: outerDiv,
+				text: `${year}`
 			})
 
 			const boxesDiv = createDiv({
 				cls: ["every-day-calendar", "boxes"],
 				parent: outerDiv,
-			})
-
-			createDiv({
-				cls: ["every-day-calendar", "year"],
-				parent: boxesDiv,
-				text: `${year}`
 			})
 
 			for (var protoMonth = 0; protoMonth < monthsInYear; protoMonth++) {

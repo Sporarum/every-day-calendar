@@ -3,35 +3,45 @@
  https://docs.obsidian.md/Reference/CSS+variables/Foundations/Colors
 */
 
-/* to debug
 .every-day-calendar {
-    outline: 1px solid var(--text-muted);
-} */
 
-.every-day-calendar.boxes {
-    
     --grid-gap: 0.3vh;
     --height: 60vh;
     --width: calc( var(--sum-box-widths) + (var(--num-months) - 1) * var(--grid-gap) );
 
     /* internals, do not override */
     --num-months: 12 !important;
-    --num-rows: 33 !important; /* year + months + 31 days */
+    --num-rows: 32 !important; /* months + 31 days */
     --box-aspect-ratio: calc( var(--num-months) / var(--num-rows) )  !important;
     --sum-box-heights:  calc( var(--height) - (var(--num-rows) - 1) * var(--grid-gap) ) !important;
     --sum-box-widths:   calc( var(--sum-box-heights) * var(--box-aspect-ratio) ) !important;
 
+
+    /* to debug */
+    /*outline: 1px solid var(--text-muted); /**/
+}
+
+.every-day-calendar.outermost {
     display: grid;
-    grid-template-columns: repeat(var(--num-months), 1fr);
+    grid-template-columns: 100%;
     grid-gap: var(--grid-gap);
-    grid-auto-flow: dense;
-    height: var(--height);
     width: var(--width);
 }
 
 .every-day-calendar.year {
     text-align: center;
-    grid-column: 1 / 13;
+}
+
+.every-day-calendar.boxes {
+
+    display: grid;
+    grid-template-columns: repeat(var(--num-months), 1fr);
+    grid-gap: var(--grid-gap);
+    grid-auto-flow: dense;
+    height: calc(var(--height));
+    width: var(--width);
+
+    /* border: 1px solid var(--text-error); */
 }
 
 .every-day-calendar.month.outer {
