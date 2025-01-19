@@ -7,7 +7,8 @@
 
     --grid-gap: 0.3vh;
     --height: 60vh;
-    --width: calc( var(--sum-box-widths) + (var(--num-months) - 1) * var(--grid-gap) );
+    --width: 50vw;
+    --computed-width: calc( var(--sum-box-widths) + (var(--num-months) - 1) * var(--grid-gap) );
 
     /* internals, do not override */
     --num-months: 12 !important;
@@ -24,8 +25,8 @@
 .every-day-calendar.outermost {
     display: grid;
     grid-template-columns: 100%;
-    grid-gap: var(--grid-gap);
-    width: var(--width);
+    gap: var(--grid-gap);
+    width: min(var(--computed-width),var(--width));
 }
 
 .every-day-calendar.year {
@@ -37,8 +38,6 @@
     grid-template-columns: repeat(var(--num-months), 1fr);
     grid-gap: var(--grid-gap);
     grid-auto-flow: dense;
-    height: calc(var(--height));
-    width: var(--width);
 
     /* border: 1px solid var(--text-error); */
 }
