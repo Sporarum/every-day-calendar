@@ -73,4 +73,4 @@ Quick starting guide for new plugin devs:
 
 - Run `npm update`
 
-For more information about plugin development, please consult https://github.com/obsidianmd/obsidian-sample-plugin
+For more information about plugin development, please consult https://docs.obsidian.md/Plugins/Getting+started/Build+a+plugin and https://github.com/obsidianmd/obsidian-sample-plugin
