@@ -2,7 +2,8 @@
 
 Create habit trackers through dataviewjs !
 
-![alt text](image.png)
+![dark mode example](readme-resources/dark-mode.png)
+![light mode example](readme-resources/light-mode.png)
 
 The layout is inspired by Simone Giertz's [Every Day Calendar](https://yetch.store/en-eur/products/every-day-goal-calendar), and the idea to make a plugin in the first place from Richard Slettevoll's [Heatmap Calendar](https://github.com/Richardsl/heatmap-calendar-obsidian).
 
