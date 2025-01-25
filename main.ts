@@ -8,9 +8,10 @@ export default class EveryDayCalendar extends Plugin {
 		type ResultType = number
 
 		//@ts-ignore
-		window.everyDayCalendar = (el: HTMLElement, year: number, fromDays: (d: Date) => ResultType): void => {
+		window.everyDayCalendar = (el: HTMLElement, year: number, fromDays: (d: Date) => ResultType, extraParams: {additionalClasses: string[]} | null = null): void => {
 			
 			const monthsInYear = 12
+			const additionalClasses = extraParams?.additionalClasses ?? []
 
 			// from https://stackoverflow.com/questions/11322281/javascript-get-array-of-day-names-of-given-date-month-year
 			function daysInMonth(month: number): number {
@@ -19,18 +20,18 @@ export default class EveryDayCalendar extends Plugin {
 			}
 
 			const outerDiv = createDiv({
-				cls: ["every-day-calendar", "outermost"],
+				cls: additionalClasses.concat(["every-day-calendar", "outermost"]),
 				parent: el,
 			})
 
 			createDiv({
-				cls: ["every-day-calendar", "year"],
+				cls: additionalClasses.concat(["every-day-calendar", "year"]),
 				parent: outerDiv,
 				text: `${year}`
 			})
 
 			const boxesDiv = createDiv({
-				cls: ["every-day-calendar", "boxes"],
+				cls: additionalClasses.concat(["every-day-calendar", "boxes"]),
 				parent: outerDiv,
 			})
 
@@ -40,12 +41,12 @@ export default class EveryDayCalendar extends Plugin {
 				const daysInThisMonth = daysInMonth(month)
 
 				const monthDiv = createDiv({
-					cls: ["every-day-calendar", "month", "outer"],
+					cls: additionalClasses.concat(["every-day-calendar", "month", "outer"]),
 					parent: boxesDiv,
 				})
 
 				createDiv({
-					cls: ["every-day-calendar", "month", "inner"],
+					cls: additionalClasses.concat(["every-day-calendar", "month", "inner"]),
 					parent: monthDiv,
 					text: new Date(Date.UTC(year, protoMonth)).toLocaleString("default", { month: "narrow"})
 				})
@@ -55,7 +56,7 @@ export default class EveryDayCalendar extends Plugin {
 					const value = fromDays(new Date(Date.UTC(year, protoMonth, day)))
 					
 					createSpan({
-						cls: ["every-day-calendar", "box"],
+						cls: additionalClasses.concat(["every-day-calendar", "box"]),
 						parent: boxesDiv,
 						attr: {value: value, month: month},
 					})
