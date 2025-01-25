@@ -1,7 +1,7 @@
 {
 	"id": "every-day-calendar",
 	"name": "Every Day Calendar",
-	"version": "0.0.0",
+	"version": "1.0.0",
 	"minAppVersion": "0.15.0",
 	"description": "Create calendars inspired by Simone Giertz's Every Day Calendar",
 	"author": "QuBe",
