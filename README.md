@@ -1,6 +1,6 @@
 # Every Day Calendar
 
-Create habit trackers through dataviewjs !
+Create habit trackers through [dataviewjs](https://blacksmithgu.github.io/obsidian-dataview/api/intro/) !
 
 ![dark mode example](readme-resources/dark-mode.png)
 ![light mode example](readme-resources/light-mode.png)
@@ -20,13 +20,13 @@ everyDayCalendar(this.container, 2025, date => {
 ```
 ````
 
-
-
 As you can see, you only need to give it the desired year, and a function from `Date` to a number which represents how done is the task that day.
 The default idea is that 1 and 2 mean the task was not done (resp done) that day, and 0 means the day is missing or invalid (for example if you were on vacation).
 The colors are taken directly from Obsidian, so they adjust with your theme.
 
 It's also possible to define custom CSS to support more values and/or more colors, see [Customization](#customization). 
+
+**Important:** You need the [Dataview plugin](obsidian://show-plugin?id=dataview) for `dataviewjs` blocks to work, and therefore this extension !
 
 ### Example
 
