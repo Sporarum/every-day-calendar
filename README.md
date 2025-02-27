@@ -135,3 +135,11 @@ For more information about plugin development, please consult https://docs.obsid
 - Run `npm run test`
 
 This will run the tests in multiple timezones, see `"test"` in `package.json` for the full list
+
+## Releasing a new version
+
+- Run one of `npm version major`, `npm version minor`, `npm version patch`
+- Run `git push` and `git push --tags`
+- Complete draft release on github
+
+In case the first command bumps incorrectly, use `npm version <version number>` instead
