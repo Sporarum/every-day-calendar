@@ -22,7 +22,7 @@ export function calculateDates(year: number, fromDays: (d: Date) => ResultType):
     // from https://stackoverflow.com/questions/11322281/javascript-get-array-of-day-names-of-given-date-month-year
     function daysInMonth(month: number): number {
         // returns the day-number of the day before the first day of the following month, i.e. the number of days in that month
-        return new Date(Date.UTC(year, month, 0)).getUTCDate()
+        return new Date(year, month, 0).getDate()
     }
 
     const months = range(monthsInYear).map(protoMonth => {
@@ -30,10 +30,10 @@ export function calculateDates(year: number, fromDays: (d: Date) => ResultType):
         const month: number = protoMonth + 1 // from 0 indexed to 1 indexed
         const daysInThisMonth = daysInMonth(month)
 
-        const monthName = new Date(Date.UTC(year, protoMonth)).toLocaleString("default", { month: "narrow" })
+        const monthName = new Date(year, protoMonth).toLocaleString("default", { month: "narrow" })
 
         const days = range(daysInThisMonth).map(protoDay =>
-            fromDays(new Date(Date.UTC(year, protoMonth, protoDay + 1)))
+            fromDays(new Date(year, protoMonth, protoDay + 1))
         )
 
         return { name: monthName, days: days }
