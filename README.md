@@ -124,10 +124,14 @@ everyDayCalendar(this.container, 2025, date => {
 - Run `npm run dev`
 - When checking changes, reload Obsidian
 
-Quick starting guide for new plugin devs:
-
 ### In case the api gets updated 
 
 - Run `npm update`
 
 For more information about plugin development, please consult https://docs.obsidian.md/Plugins/Getting+started/Build+a+plugin and https://github.com/obsidianmd/obsidian-sample-plugin
+
+## Testing your changes
+
+- Run `npm run test`
+
+This will run the tests in multiple timezones, see `"test"` in `package.json` for the full list

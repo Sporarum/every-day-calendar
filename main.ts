@@ -1,5 +1,5 @@
 import { App, Editor, MarkdownView, Modal, Notice, Plugin, PluginSettingTab, Setting } from 'obsidian';
-import { calculateDates, Month, ResultType } from 'dateCalculations';
+import { calculateDates, Month, ResultType } from './dateCalculations';
 
 export default class EveryDayCalendar extends Plugin {
 
