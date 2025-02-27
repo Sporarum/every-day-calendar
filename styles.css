@@ -26,7 +26,7 @@
     display: grid;
     grid-template-columns: 100%;
     gap: var(--grid-gap);
-    width: min(var(--computed-width),var(--width));
+    width: min(var(--computed-width), var(--width));
 }
 
 .every-day-calendar.year {
@@ -45,9 +45,9 @@
 .every-day-calendar.month.outer {
     container-type: size;
     aspect-ratio: 1;
-} 
+}
 
-@container (min-width: 0px){
+@container (min-width: 0px) {
     .every-day-calendar.month.inner {
         font-size: 70cqh;
         text-align: center;
@@ -127,4 +127,3 @@
 .every-day-calendar.box[month="12"] {
     grid-column: 12;
 }
-
